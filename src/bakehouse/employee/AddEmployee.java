@@ -8,17 +8,35 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import java.awt.event.*;
 import java.awt.*;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class AddEmployee extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddEmployee
-     */
+        public java.sql.Connection cn;
+        public PreparedStatement st;
+        ResultSet rs=null;
+        
     public AddEmployee() {
         initComponents();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            cn=(java.sql.Connection)DriverManager.getConnection("jdbc:mysql://localhost:3308/test2?zeroDateTimeBehavior=convertToNull","root","");
+            JOptionPane.showMessageDialog(null, "conneted");
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Not conneted");
+        }
     }
 
     /**
@@ -46,6 +64,7 @@ public class AddEmployee extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtEmployeeId = new javax.swing.JTextField();
+        btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -84,6 +103,13 @@ public class AddEmployee extends javax.swing.JFrame {
 
         jLabel2.setText("Employee Id");
 
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,20 +128,21 @@ public class AddEmployee extends javax.swing.JFrame {
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdd))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName)
-                            .addComponent(txtAddress)
-                            .addComponent(txtEmail)
-                            .addComponent(txtContactNo)
-                            .addComponent(txtEmployeeId, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btnAdd)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnCancel)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnClear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                                .addComponent(btnCancel))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtName)
+                                .addComponent(txtAddress)
+                                .addComponent(txtEmail)
+                                .addComponent(txtContactNo)
+                                .addComponent(txtEmployeeId, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,7 +177,8 @@ public class AddEmployee extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
-                    .addComponent(btnAdd))
+                    .addComponent(btnAdd)
+                    .addComponent(btnClear))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -175,15 +203,30 @@ public class AddEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        /*try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = Drivermanager.getConnection("jdbc:mysql://localhost:3306/bakehouse","root","");
-
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }*/
-        // TODO add your handling code here:
+        
+            try {
+                int employeeId = Integer.parseInt(txtEmployeeId.getText());
+                String name = txtName.getText();
+                String address = txtAddress.getText();
+                String email = txtEmail.getText();
+                String password = txtPassword.getText();
+                int contactNo = Integer.parseInt(txtContactNo.getText());
+                
+                String sql = "INSERT INTO employee (employeeId, name, address, contactNo, email, password) VALUES('"+employeeId+"','"+name+"','"+address+"','"+contactNo+"','"+email+"','"+password+"')";
+                st = cn.prepareStatement(sql);
+                st.execute();
+                JOptionPane.showMessageDialog(null,"Added Successfully");
+                
+                txtEmployeeId.setText(null);
+                txtName.setText(null);
+                txtAddress.setText(null);
+                txtContactNo.setText(null);
+                txtEmail.setText(null);
+                txtPassword.setText(null);
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,"Failed");
+            }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -195,6 +238,15 @@ public class AddEmployee extends javax.swing.JFrame {
         update.setVisible(true);
         close();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtEmployeeId.setText(null);
+        txtName.setText(null);
+        txtAddress.setText(null);
+        txtContactNo.setText(null);
+        txtEmail.setText(null);
+        txtPassword.setText(null);
+    }//GEN-LAST:event_btnClearActionPerformed
 
      public void close(){
 
@@ -239,6 +291,7 @@ public class AddEmployee extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnClear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

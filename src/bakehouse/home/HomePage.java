@@ -21,7 +21,9 @@ public class HomePage extends javax.swing.JFrame {
 
         public java.sql.Connection cn;
         public PreparedStatement st;
-        ResultSet rs=null;
+        ResultSet rs = null;
+        double grossTotal = 0;
+
     public HomePage() {
        
         initComponents();
@@ -65,7 +67,12 @@ public class HomePage extends javax.swing.JFrame {
         txtGrossTotal = new javax.swing.JTextField();
         txtCash = new javax.swing.JTextField();
         txtBalance = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCalculate = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtUnitPrice = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +83,7 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel3.setText("Quantity");
 
+        txtItemId.setToolTipText("");
         txtItemId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtItemIdActionPerformed(evt);
@@ -133,30 +141,27 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Calculate");
+        btnCalculate.setText("Calculate");
+        btnCalculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculateActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Unit Price");
+
+        txtUnitPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUnitPriceActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Item Name");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtItemId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(btnAdd)
-                .addGap(18, 18, 18)
-                .addComponent(btnClear)
-                .addGap(111, 111, 111))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(231, 231, 231))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -166,10 +171,9 @@ public class HomePage extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnPrintReceipt)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancel))
-                            .addComponent(jSeparator1)))
+                                .addComponent(btnCancel))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
+                        .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,10 +183,52 @@ public class HomePage extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtCash, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
-                                .addComponent(jButton1))
-                            .addComponent(txtGrossTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnCalculate))
+                            .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(231, 231, 231))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtGrossTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtName)
+                            .addComponent(txtItemId, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtUnitPrice)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(btnAdd)
+                .addGap(18, 18, 18)
+                .addComponent(btnClear)
+                .addGap(111, 111, 111))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(48, 48, 48)
+                    .addComponent(jSeparator2)
+                    .addGap(14, 14, 14)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,9 +243,15 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtGrossTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,18 +259,23 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnCalculate))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrintReceipt)
                     .addComponent(btnCancel))
                 .addGap(25, 25, 25))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(186, 186, 186)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(389, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,16 +283,15 @@ public class HomePage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(40, 40, 40)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -251,13 +307,31 @@ public class HomePage extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         int quantity = Integer.parseInt(txtQuantity.getText());
+        //int name = 
         //double price = Double.parseDouble(txtUnitPrice.getText());
+        try {
+            String sql ="SELECT price,name FROM inventory WHERE code = '"+txtItemId.getText()+"'";
+            st = cn.prepareStatement(sql);
+            rs = st.executeQuery();
+            
+            if (rs.next()){
+                txtUnitPrice.setText(rs.getString("price"));
+                txtName.setText(rs.getString("name"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cannot find the item");
+        }
+        
+        double unitPrice = Integer.parseInt(txtUnitPrice.getText());
+        String name = txtName.getText();
+        double total = unitPrice*quantity;
+        grossTotal = grossTotal + total;
+        
+        txtGrossTotal.setText("Rs. "+grossTotal);
         
         txtPrintReceipt.append("\n"+
-                txtItemId.getText()+"\t "+ "txtName.getText()"+ "\t\t " +
-                txtQuantity.getText()+ "\t "+"txtUnitPrice.getText()"+
-                "\t +quantity*price"
-                );
+                txtItemId.getText()+"\t"+ name + "\t\t " +quantity+ "\t"+ unitPrice +
+                "\t"+total);
        
         txtQuantity.setText("");
         txtItemId.setText("");
@@ -271,7 +345,9 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        txtPrintReceipt.setText("");
+        txtPrintReceipt.setText("			Receipt\n" +
+"\n" +
+"Item Id	Name		Quantity	Unit Price	Total");
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
@@ -283,8 +359,23 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
     private void txtGrossTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGrossTotalActionPerformed
-        
+        //int grossTotal = 0;
+        //grossTotal = quantity*price + grossTotal;
     }//GEN-LAST:event_txtGrossTotalActionPerformed
+
+    private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
+        double cash = Integer.parseInt(txtCash.getText());
+        double grossTotal = Double.parseDouble(txtGrossTotal.getText());
+        double balance = cash - grossTotal;
+// TODO add your handling code here:
+        txtBalance.setText("Rs."+ balance);
+        
+        txtPrintReceipt.append("\n\n" + "\t\t\t\tTotal\t" + grossTotal +"\n" + "\t\t\t\tCash\t" + cash +"\n"+"\t\t\t\tBalance\t"+balance);
+    }//GEN-LAST:event_btnCalculateActionPerformed
+
+    private void txtUnitPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUnitPriceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,24 +414,33 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCalculate;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnPrintReceipt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtCash;
     private javax.swing.JTextField txtGrossTotal;
     private javax.swing.JTextField txtItemId;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextArea txtPrintReceipt;
     private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtUnitPrice;
     // End of variables declaration//GEN-END:variables
+
+    private String string(double balance) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

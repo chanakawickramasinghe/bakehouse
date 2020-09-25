@@ -24,18 +24,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,29 +45,9 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtItemId" min="-2" pref="75" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Component id="txtQuantity" min="-2" pref="55" max="-2" attributes="0"/>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
-                  <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnClear" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="112" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jScrollPane1" pref="524" max="32767" attributes="0"/>
@@ -77,11 +56,10 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jSeparator1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel7" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
@@ -92,14 +70,71 @@
                               <Group type="102" attributes="0">
                                   <Component id="txtCash" min="-2" pref="55" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCalculate" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txtGrossTotal" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="txtBalance" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="txtBalance" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="112" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jSeparator1" min="-2" pref="524" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtGrossTotal" min="-2" pref="71" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel2" max="32767" attributes="0"/>
+                              <Component id="jLabel5" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtName" max="32767" attributes="0"/>
+                              <Component id="txtItemId" pref="75" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="txtQuantity" min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel4" min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtUnitPrice" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnClear" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -117,9 +152,16 @@
                       <Component id="txtQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtUnitPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtGrossTotal" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -128,14 +170,14 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="txtCash" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCalculate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtBalance" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="184" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -143,6 +185,13 @@
                       <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace pref="389" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -167,6 +216,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtItemId">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtItemIdActionPerformed"/>
           </Events>
@@ -250,10 +302,32 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtBalance">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnCalculate">
           <Properties>
             <Property name="text" type="java.lang.String" value="Calculate"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalculateActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Unit Price"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtUnitPrice">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUnitPriceActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Item Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtName">
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
       </SubComponents>
     </Container>
